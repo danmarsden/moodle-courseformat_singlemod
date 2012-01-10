@@ -1,0 +1,17 @@
+This is a quick POC I wrote to see how easy it would be to extend the SCORM Course Format and make it easy to add other single modules - To make this work for your own module (not just SCORM) you will need to make 2 changes.
+
+1st - implement a function in your modules locallib.php file called module_course_format_display() - see the scorm_course_format_display() function for an example.
+
+2 - in the course/format/singlemod/format.php file look for this line:
+$supportedmodules = array('scorm');
+
+and add the module you have changed to that array eg:
+$supportedmodules = array('scorm', 'choice');
+
+Then go ahead and create a course using the singlemod format.
+
+NOTE: if you have debugging on, there's an ugly warning that shows/prevents the redirect - see: http://tracker.moodle.org/browse/MDL-28583
+
+This is Alpha/development code - consider it untested!
+
+Dan Marsden 2012
